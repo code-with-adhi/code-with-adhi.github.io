@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TLDR News Summarizer</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <section id="bank">
+      <a href="index.html"
+        ><img src="/img/Icon.png" alt="Adhithya" height="100px" class="logo"
+      /></a>
+      <h2>TLDR News: An AI-Powered Full-Stack News Summarizer</h2>
+      <h3>Overview:</h3>
+      <p>
+        TLDR News is a full-stack web application designed to combat information
+        overload. It fetches top headlines from around the world, allows the
+        user to select an article, and then uses a custom-built web scraper and
+        the Google Gemini AI to provide a concise, easy-to-read summary. This
+        project demonstrates a complete development cycle, from frontend
+        interface design to a complex, containerized backend service.
+      </p>
+
+      <h3>Project Description:</h3>
+      <p>
+        This application solves a common problem: not having enough time to read
+        full news articles. It features a React-based frontend that communicates
+        with a powerful Node.js backend. The backend is responsible for fetching
+        news, performing robust web scraping, and interfacing with the AI model
+        for summarization.
+      </p>
+      <p>
+        The project was built with a focus on scalability and modern development
+        practices, utilizing the following technologies:
+      </p>
+      <ul>
+        <li>
+          <span>React.js & React Router:</span> The client-side is a dynamic
+          Single Page Application (SPA) that provides a seamless user experience
+          for browsing headlines and viewing summarized articles without page
+          reloads.
+        </li>
+        <li>
+          <span>Node.js & Express.js:</span> The backend server handles all API
+          requests, managing the logic for fetching news, scraping external
+          sites, and processing summarization requests.
+        </li>
+        <li>
+          <span>Puppeteer & Readability.js:</span> A sophisticated web scraping
+          service was built to navigate to external news articles, bypass
+          anti-scraping measures, and intelligently extract the core article
+          content, stripping away ads and boilerplate.
+        </li>
+        <li>
+          <span>Google Gemini API:</span> Integrated to provide high-quality,
+          context-aware summaries of the scraped article text, turning long-form
+          content into a quick digest.
+        </li>
+        <li>
+          <span>Docker & Render:</span> The entire backend is containerized
+          using Docker, ensuring a consistent and isolated environment. It is
+          deployed as a web service on Render, showcasing modern DevOps and
+          cloud deployment skills.
+        </li>
+      </ul>
+
+      <div class="images">
+        <p>Images from the output:</p>
+        <img
+          src="/img/tldr.png"
+          alt="The main headlines page of the TLDR News application"
+          height="500px"
+          width="800px"
+        />
+
+      <h4>
+        Access the website right
+        <a href="https://tldr-news-by-adhi.vercel.app">here</a>.
+      </h4>
+    </section>
+
+    <div class="gradient"></div>
+
+    <footer>
+      <h2><a href="index.html">Adhithya A</a> &middot; Fullstack Developer</h2>
+      <ul>
+        <li>
+          <a href="https://www.linkedin.com/in/adhithya-a-78b823258/">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/code-with-adhi">
+            <i class="fab fa-github"></i
+          ></a>
+        </li>
+        <li>
+          <a href="mailto:adhithya688@gmail.com"
+            ><i class="fa fa-envelope"></i
+          ></a>
+        </li>
+      </ul>
+      <p>&copy; 2025 Adhithya A . All rights reserved.</p>
+    </footer>
+  </body>
+</html>
