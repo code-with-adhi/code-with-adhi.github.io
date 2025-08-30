@@ -1,0 +1,60 @@
+/* src/index.css */
+:root {
+  /* --- Your Existing Palette --- */
+  --bg-color: #15191E;
+  --card-color: #1a202c;
+  --primary-color: #766DA7;
+  --text-color: #A0AE91;
+  --heading-color: #FFFFFF;
+  --border-color: #556842;
+  --primary-light: #9b93c8; /* Lighter purple for hovers */
+  --success-color: #22c55e; /* Bright green for success messages */
+  --error-color: #a30e2b;   /* Your wine red for errors */
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+section {
+  padding: 5rem 2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--heading-color);
+}

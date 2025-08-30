@@ -1,0 +1,1486 @@
+/* src/App.css */
+
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* src/App.css */
+
+/* --- Aurora Line Trail --- */
+.line-trail-svg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen; /* Creates a nice glowing effect on dark backgrounds */
+}
+
+.line-trail-svg path {
+  fill: none;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: blur(2px); /* Softens the line to look like a light trail */
+}
+
+/* Hide the default cursor */
+body {
+  cursor: none;
+}
+/* Show default cursor on interactive elements */
+a,
+button,
+.skill-item-about,
+.flip-card,
+.project-card {
+  cursor: none;
+}
+
+/* src/App.css */
+
+/* --- Click Sparkle Effect --- */
+.click-sparkle {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998; /* Just below the line trail */
+
+  /* The burst animation */
+  animation: sparkle-burst 0.6s ease-out forwards;
+}
+
+@keyframes sparkle-burst {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  to {
+    opacity: 0;
+    /* Move to the random end position defined in the component */
+    transform: translate(var(--end-x), var(--end-y)) scale(0);
+  }
+}
+/* --- Navbar --- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 2rem;
+  background-color: rgba(21, 25, 30, 0.8); /* Eerie Black with transparency */
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  font-size: 0.9rem;
+}
+/* src/App.css */
+nav a.logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--heading-color);
+  display: flex; /* Helps with vertical alignment */
+  align-items: center;
+}
+
+/* Add this new rule */
+nav a.logo img {
+  height: 80px; /* Adjust the height of your logo as needed */
+}
+nav ul {
+  display: flex;
+  list-style-type: none;
+  gap: 2rem;
+}
+nav ul a {
+  color: var(--text-color);
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 4px;
+}
+nav ul a:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+nav ul a:hover:after {
+  width: 100%;
+}
+
+/* --- Hero --- */
+#hero {
+  text-align: center;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 2rem;
+}
+#hero h1 {
+  font-size: 4.5rem; /* You can adjust the size of your name */
+  color: var(--heading-color);
+  margin-bottom: 0.5rem; /* Less space below your name */
+}
+
+/* New style for the subtitle */
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--primary-color); /* Use your accent color */
+  margin-bottom: 2rem; /* Space below the subtitle */
+}
+
+#hero p {
+  /* This now styles the longer description text */
+  font-size: 1.1rem;
+  max-width: 50ch;
+  margin-bottom: 2.5rem;
+}
+#hero .cta-buttons a {
+  display: inline-block;
+  margin: 0 0.5rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: transform 0.2s ease;
+}
+#hero .cta-buttons a:hover {
+  transform: translateY(-3px);
+}
+#hero .cta-buttons a.primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+#hero .cta-buttons a.secondary {
+  background-color: transparent;
+  color: var(--heading-color);
+  border: 1px solid var(--border-color);
+}
+
+/* --- About & Contact Intro Text --- */
+#about p {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.1rem;
+}
+#contact > p {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* --- Skills --- */
+.skills-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.skill-category {
+  background-color: var(--card-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.skill-category h3 {
+  color: var(--heading-color);
+  margin-bottom: 1.5rem;
+  text-align: left;
+  font-size: 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-color);
+  min-width: 120px;
+}
+
+.skill-item img {
+  width: 20px;
+  height: 20px;
+}
+
+.skill-item p {
+  font-weight: 500;
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* --- Projects --- */
+.project-card {
+  background-color: var(--card-color);
+  border: 1px solid var(--border-color); /* This line creates the border */
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+#projects .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+.project-card .project-image-container {
+  width: 100%;
+  height: 200px; /* Give the container a fixed height */
+  overflow: hidden; /* Hide any overflow if image is too large */
+  margin-bottom: 1rem;
+  border-radius: 8px; /* Match card border-radius */
+}
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+}
+.project-card a {
+  display: block;
+}
+.project-card .project-image-container img {
+  width: 100%;
+  height: 100%; /* Make image fill its container */
+  object-fit: contain; /* This is the key: scales the image down to fit */
+  background-color: var(
+    --bg-color
+  ); /* Add a background color to fill empty space */
+  border-radius: 8px;
+}
+.project-card h3 {
+  padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+  color: var(--success-color);
+}
+.project-card p {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+}
+/* src/App.css */
+
+/* --- Project Detail Page Link Buttons --- */
+.project-detail .project-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn.btn-secondary {
+  background-color: var(--card-color);
+  color: var(--heading-color);
+  border: 1px solid var(--border-color);
+} /* src/App.css */
+
+/* --- Project Detail Page Header --- */
+.project-detail header {
+  text-align: left; /* Change from center to left */
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 3rem;
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* This will push items to opposite ends */
+  margin-bottom: 1rem;
+  position: relative; /* Needed to perfectly center the title */
+}
+
+.detail-header h1 {
+  margin-bottom: 0;
+  /* This trick perfectly centers the title */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--card-color);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-light);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.back-button:hover {
+  border-color: var(--primary-color);
+  color: var(--heading-color);
+}
+
+/* --- Skill Tags on Project Card --- */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.skill-tag-preview {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px; /* Pill shape */
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* --- Skills List on Project Detail Page --- */
+.project-skills .skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.project-skills .skill-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--card-color);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.project-skills .skill-tag img {
+  width: 20px;
+  height: 20px;
+}
+
+/* --- Contact Form --- */
+.contact-form {
+  max-width: 600px;
+  margin: 2rem auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--card-color);
+  padding: 2rem;
+  border-radius: 8px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  margin-bottom: 0.5rem;
+  color: var(--heading-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.form-group input,
+.form-group textarea {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  color: var(--heading-color);
+  padding: 0.8rem;
+  border-radius: 6px;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+.submit-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: none;
+  transition: background-color 0.2s ease;
+}
+.submit-btn:hover {
+  background-color: #6366f1;
+}
+.form-status {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+footer .social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+footer .social-links a {
+  color: var(--text-color);
+  font-size: 1.5rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+footer .social-links a:hover {
+  color: var(--primary-color);
+  transform: translateY(-3px);
+}
+/* --- Project Detail Page --- */
+.project-detail {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+.project-detail header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.project-detail header .back-link {
+  display: block;
+  margin-bottom: 2rem;
+}
+.project-detail header .project-links a {
+  margin: 0 1rem;
+}
+.project-detail .main-image {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+}
+.main-image {
+  /* Set a maximum size so large images are scaled down */
+  max-width: 8000px;
+  max-height: 400px;
+  /* Ensure smaller images aren't stretched */
+  width: auto;
+  height: auto;
+  /* Maintain aspect ratio */
+  object-fit: contain;
+}
+.project-detail .project-content h2 {
+  font-size: 2rem;
+  margin-top: 3rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+.project-detail .project-content ul {
+  list-style-type: none;
+}
+.project-detail .project-content li {
+  background-color: var(--card-color);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+.project-detail .project-content li p {
+  margin-top: 0.5rem;
+}
+.project-detail .gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.project-detail .gallery img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+/* --- Fade-in Animation --- */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* src/App.css */
+
+/* src/App.css */
+
+/* --- Enhanced About Page --- */
+.about-page .about-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Two-column layout */
+  align-items: center;
+  gap: 4rem;
+}
+
+.profile-header {
+  text-align: center;
+}
+
+.profile-header img {
+  width: 200px; /* Slightly larger image */
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--primary-color); /* Use primary color for a pop */
+  box-shadow: 0 0 25px rgba(118, 109, 167, 0.3); /* Subtle glow */
+  margin-bottom: 1rem;
+}
+
+.profile-header h2 {
+  color: var(--heading-color);
+  font-size: 1.75rem;
+}
+
+.about-content h1 {
+  font-size: 2.5rem;
+  color: var(--heading-color);
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.about-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.8; /* Increased line height for readability */
+}
+
+.skills-section h3 {
+  font-size: 1.5rem;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--heading-color);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .about-page .about-section {
+    grid-template-columns: 1fr; /* Stack columns on mobile */
+    text-align: center;
+  }
+  .back-button {
+    padding: 0.5rem; /* smaller button */
+    gap: 0;
+    justify-content: center;
+  }
+
+  .back-button span {
+    display: none; /* hide text label */
+  }
+}
+/* src/App.css */
+
+/* --- FINAL Skills Section Styles --- */
+.skills-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* This is the main card for each category */
+.skill-category {
+  background-color: var(--card-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 2rem;
+  transition: border-color 0.2s ease;
+}
+
+.skill-category:hover {
+  border-color: var(--primary-color);
+}
+
+/* This is the heading inside the card */
+.skill-category h3 {
+  color: var(--heading-color);
+  margin-bottom: 1.5rem;
+  text-align: left;
+  font-size: 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+/* This container will stack the skills vertically */
+/* src/App.css */
+
+.skills-grid {
+  display: grid;
+  /* Fixed 2 columns for desktop/tablet, centered within the card */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  justify-items: center; /* Center grid items horizontally */
+  align-items: start; /* Align items to the start of their cell vertically */
+}
+
+/* This is a single skill item (a row) */
+/* src/App.css */
+
+/* --- About Page Skill List --- */
+/* src/App.css */
+
+/* --- About Page Skill List --- */
+.skills-about-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+/* src/App.css */
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-color);
+
+  /* --- The Fix --- */
+  width: 100%; /* Make the button fill its grid column */
+
+  height: 90px;
+  text-align: center;
+}
+
+.skill-item img {
+  width: 30px; /* Slightly larger icons */
+  height: 30px;
+  margin-bottom: 0.25rem; /* Small space between icon and text */
+}
+
+.skill-item p {
+  font-weight: 500;
+  color: var(--text-color);
+  margin: 0;
+  font-size: 0.9rem; /* Slightly smaller text if needed to fit */
+  line-height: 1.2;
+}
+
+.skill-item-about {
+  background-color: var(--card-color);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: var(--heading-color);
+  font-size: 0.95rem;
+}
+
+.skill-item-about img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.skill-proficiency {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  margin-left: auto; /* Pushes proficiency to the right */
+}
+
+.skill-item:hover p {
+  color: var(--primary-color);
+}
+
+.skill-item img {
+  width: 20px;
+  height: 20px;
+}
+
+.skill-item p {
+  font-weight: 500;
+  color: var(--text-color);
+  margin: 0;
+  transition: color 0.2s ease;
+}
+/* src/App.css */
+
+/* --- Certificates Section --- */
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+/* The main container that enables the 3D effect */
+/* src/App.css */
+
+/* --- FINAL Certificates Section Styles --- */
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+/* The main container that enables the 3D effect */
+.flip-card {
+  background-color: transparent;
+  width: 350px;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  perspective: 1000px;
+  cursor: none; /* Add this to show it's interactive */
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+/* Only use the flipped class - no hover! */
+.flip-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.flip-card-front {
+  background-color: var(--card-color);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.flip-card-back {
+  background-color: var(--card-color);
+  border: 1px solid var(--primary-color);
+  color: var(--text-color);
+  transform: rotateY(180deg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Rest of your existing styles remain the same */
+.associated-skills {
+  margin-top: auto;
+  width: 100%;
+}
+
+.associated-skills h4 {
+  font-size: 0.9rem;
+  color: var(--heading-color);
+  margin-bottom: 0.5rem;
+}
+
+.associated-skills ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.associated-skills li {
+  background-color: var(--bg-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.flip-card-back a {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+/* --- Skills --- */
+.skills-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Main category card */
+.skill-category {
+  background-color: var(--card-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 2rem;
+  transition: border-color 0.2s ease;
+}
+
+.skill-category:hover {
+  border-color: var(--primary-color);
+}
+
+.skill-category h3 {
+  color: var(--success-color);
+  margin-bottom: 1.5rem;
+  text-align: left;
+  font-size: 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+/* Skills grid inside each category */
+.skills-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.skills-grid {
+  display: grid;
+  /* This creates a two-column grid */
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+/* Wrapper for item + tooltip */
+.skill-item-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Single skill item (button) */
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 90px; /* Center the content horizontally */
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--card-color);
+  transition: all 0.2s ease;
+  width: auto; /* Allow it to be wider than its content */
+  min-width: 120px; /* Set a minimum width for all buttons */
+  cursor: none;
+}
+
+.skill-item.active,
+.skill-item:hover {
+  border-color: var(--primary-color);
+  color: var(--heading-color);
+  box-shadow: 0 0 15px rgba(118, 109, 167, 0.3);
+}
+
+.skill-item p {
+  font-weight: 500;
+  color: var(--text-color);
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.skill-item.active p,
+.skill-item:hover p {
+  color: var(--heading-color);
+}
+.skill-item-about {
+  background-color: var(--card-color);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: var(--heading-color);
+}
+
+.skill-item-about img {
+  width: 24px;
+  height: 24px;
+}
+/* Tooltip next to skill item */
+.skill-tooltip-content {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 280px;
+
+  background-color: var(--card-color);
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 0 15px rgba(118, 109, 167, 0.3);
+  padding: 1.5rem;
+
+  /* Seamless merge with button */
+  /* border-left: none; */
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+
+  opacity: 0;
+  animation: slide-fade-in 0.25s ease forwards;
+  z-index: 10;
+}
+.skill-tooltip-content::before {
+  content: "";
+  position: absolute;
+  top: 1.5rem; /* Adjust this to move the arrow up or down */
+  left: -11px; /* Positions the tip of the arrow */
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-right: 11px solid var(--primary-color); /* This is the border color */
+}
+.skill-tooltip-content::after {
+  content: "";
+  position: absolute;
+  top: 1.5rem; /* Must match the ::before top position */
+  left: -9px; /* Positioned 2px to the right of the ::before */
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-right: 9px solid var(--card-color); /* This is the background color */
+}
+
+/* The close button */
+
+@keyframes slide-fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* src/App.css */
+
+.tooltip-header {
+  display: flex; /* Make it a flex container */
+  align-items: center; /* Vertically align items to the center */
+  gap: 0.75rem; /* Keep your existing gap */
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Also ensure the image has a defined size */
+.tooltip-header img {
+  width: 30px;
+  height: 30px;
+  /* Add flex-shrink: 0 to prevent it from shrinking on smaller screens */
+  flex-shrink: 0;
+}
+
+/* Ensure the heading itself is styled correctly */
+.tooltip-header h3 {
+  color: var(--heading-color);
+  margin: 0; /* Remove default margins */
+  font-size: 1.2rem;
+  border: none;
+  padding: 0;
+  /* Allow it to grow and take available space */
+  flex-grow: 1;
+}
+
+.tooltip-body p {
+  margin-bottom: 0.5rem;
+}
+
+.tooltip-body strong {
+  color: var(--heading-color);
+}
+
+.tooltip-body ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+.tooltip-body li {
+  margin-bottom: 0.25rem;
+}
+
+.tooltip-body li a {
+  border-bottom: 1px dashed var(--primary-color);
+  padding-bottom: 2px;
+  font-size: 0.95rem;
+}
+
+.tooltip-body li a:hover {
+  color: var(--heading-color);
+}
+
+/* src/App.css */
+
+/* --- Social Links Section on About Page --- */
+.social-connect {
+  background-color: var(--card-color);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.social-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.social-link-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.social-link-card:hover {
+  border-color: var(--primary-color);
+  color: var(--heading-color);
+  transform: translateY(-5px);
+}
+
+.social-link-card i {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+/* --- Custom Social Icon on About Page --- */
+.custom-social-icon-large {
+  width: 2rem; /* Match the font-size of the Font Awesome icons in this section */
+  height: 2rem;
+}
+/* src/App.css */
+
+/* --- Responsive Styles --- */
+/* src/App.css */
+
+/* --- Hamburger Menu Styles --- */
+.hamburger {
+  display: none; /* Hidden on desktop */
+  font-size: 1.5rem;
+  cursor: none;
+  z-index: 101;
+  color: var(--heading-color);
+}
+
+@media (max-width: 768px) {
+  /* Hide the desktop nav links */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: var(--card-color);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  /* Show the mobile nav when it has the 'open' class */
+  .nav-links.open {
+    transform: translateX(0);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Show the hamburger icon */
+  .hamburger {
+    display: block;
+  }
+}
+
+/* For Tablets and smaller desktops (up to 992px) */
+@media (max-width: 992px) {
+  .skills-container {
+    grid-template-columns: 1fr 1fr; /* Force two columns */
+  }
+
+  .about-page .about-section {
+    grid-template-columns: 1fr; /* Stack columns */
+    text-align: center;
+    gap: 2rem;
+  }
+}
+
+/* For Mobile Phones (up to 768px) */
+@media (max-width: 768px) {
+  section {
+    padding: 3rem 1rem;
+  }
+
+  /* Make navbar links smaller and logo slightly smaller */
+  nav {
+    padding: 1rem;
+  }
+  nav ul {
+    gap: 1rem;
+  }
+  nav a.logo img {
+    height: 35px;
+  }
+
+  /* Adjust Hero section typography */
+  #hero h1 {
+    font-size: 3rem;
+  }
+  #hero p {
+    font-size: 1rem;
+  }
+
+  /* Stack skill category cards to a single column */
+  .skills-container {
+    /* Stack the main category cards on mobile */
+    grid-template-columns: 1fr;
+  }
+
+  /* Adjust project grid for smaller screens */
+  #projects .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stack images in project detail gallery */
+  .project-detail .gallery {
+    grid-template-columns: 1fr;
+  }
+  #skills .skills-grid {
+    flex-direction: column; /* Stack skills vertically */
+    align-items: stretch; /* Make each skill take the full width */
+  }
+  .skill-item-wrapper {
+    /* On mobile, the wrapper needs to be static for simpler positioning */
+    position: static;
+  }
+
+  .skill-tooltip-content {
+    display: none;
+  }
+
+  /* We don't need a hover effect for the button on mobile */
+  .skill-item-wrapper:hover .skill-item {
+    border-radius: 8px;
+  }
+
+  /* Hide the desktop-style animation and hover effects */
+  .skill-item-wrapper:hover .skill-tooltip-content {
+    opacity: 1;
+    transform: none; /* Disable desktop transform */
+    pointer-events: auto;
+  }
+}
+@media (max-width: 480px) {
+  /* Stack the main skill category cards into a single column */
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Complete Custom Cursors CSS with Base Styles */
+
+/* BASE QUANTUM PARTICLE CURSOR STYLES */
+.quantum-particle-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+}
+
+.quantum-core {
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.quantum-core.state-0 {
+  background: radial-gradient(circle, #22c55e, transparent);
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.8);
+}
+
+.quantum-core.state-1 {
+  background: radial-gradient(circle, #766da7, transparent);
+  box-shadow: 0 0 15px rgba(118, 109, 167, 0.8);
+  transform: translate(-50%, -50%) scale(0.7);
+  opacity: 0.7;
+}
+
+.quantum-core.state-2 {
+  background: radial-gradient(circle, #9b93c8, transparent);
+  box-shadow: 0 0 15px rgba(155, 147, 200, 0.8);
+  transform: translate(-50%, -50%) scale(1.3);
+}
+
+.quantum-core.state-3 {
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.5), transparent);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 0.5;
+}
+
+.quantum-field {
+  position: absolute;
+  border: 1px solid;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.3;
+}
+
+.field-1 {
+  width: 20px;
+  height: 20px;
+  border-color: rgba(34, 197, 94, 0.4);
+  animation: quantumField 3s linear infinite;
+}
+
+.field-2 {
+  width: 30px;
+  height: 30px;
+  border-color: rgba(118, 109, 167, 0.4);
+  animation: quantumField 3s linear infinite reverse;
+}
+
+.field-3 {
+  width: 40px;
+  height: 40px;
+  border-color: rgba(155, 147, 200, 0.4);
+  animation: quantumField 4s linear infinite;
+}
+
+.probability-cloud {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.4), transparent 70%);
+  animation: cloudPulse 3s infinite ease-in-out, cloudShift 8s infinite linear;
+}
+
+@keyframes cloudPulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.9;
+  }
+}
+
+@keyframes cloudShift {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(180deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes quantumField {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1.1);
+    opacity: 0.3;
+  }
+}
+
+@keyframes probabilityWave {
+  0%,
+  100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.2);
+  }
+}
+/* Enhanced Quantum Particle for Normal State */
+.quantum-particle-cursor.normal-state .quantum-core {
+  transition: all 0.3s ease;
+}
+
+.quantum-particle-cursor.normal-state .quantum-core.state-0 {
+  background: radial-gradient(circle, #22c55e, rgba(34, 197, 94, 0.3));
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+}
+
+.quantum-particle-cursor.normal-state .quantum-core.state-1 {
+  background: radial-gradient(circle, #766da7, rgba(118, 109, 167, 0.3));
+  box-shadow: 0 0 20px rgba(118, 109, 167, 0.6);
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0.8;
+}
+
+.quantum-particle-cursor.normal-state .quantum-core.state-2 {
+  background: radial-gradient(circle, #9b93c8, rgba(155, 147, 200, 0.3));
+  box-shadow: 0 0 25px rgba(155, 147, 200, 0.8);
+  transform: translate(-50%, -50%) scale(1.4);
+}
+
+.quantum-particle-cursor.normal-state .quantum-core.state-3 {
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.6), transparent);
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+  transform: translate(-50%, -50%) scale(0.6);
+  opacity: 0.6;
+}
+
+.quantum-trail {
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(34, 197, 94, 0.8), transparent);
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+  animation: quantumTrail 0.5s ease-out;
+}
+
+@keyframes quantumTrail {
+  0% {
+    opacity: 0.8;
+    transform: translateY(-50%) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50%) scaleX(0.3);
+  }
+}
+
+/* Smooth transitions between cursor states */
+.space-probe-cursor,
+.quantum-particle-cursor {
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Hide default cursor only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+}
+
+/* Show pointer cursor on interactive elements for touch devices */
+a,
+button,
+.skill-item-about,
+.flip-card,
+.project-card,
+[role="button"],
+[onclick],
+.clickable {
+  cursor: none !important;
+}
